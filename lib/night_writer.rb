@@ -1,3 +1,5 @@
 message, braille = ARGV
-message_file = File.read("./#{message}")
-puts "created #{braille} containing #{message_file.length - 1} characters"
+@message_read = File.read("./#{message}")
+@message_open = File.open("./#{message}")
+@braille_file = braille
+puts "created #{braille} containing #{@message_read.length - 1} characters"
