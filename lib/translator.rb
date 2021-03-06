@@ -1,6 +1,11 @@
-letters = ("a".."z").to_a
-
-braille_hash = {"a" => ["0.", "..", ".."],
+class Translator
+  attr_reader :braille_hash,
+              :message,
+              :braille
+  def initialize (message, braille)
+    @message = message
+    @braille = braille
+    @braille_hash = {"a" => ["0.", "..", ".."],
                 "b" => ["0.", "0.", ".."],
                 "c" => ["00", "..", ".."],
                 "d" => ["00", ".0", ".."],
@@ -27,3 +32,6 @@ braille_hash = {"a" => ["0.", "..", ".."],
                 "y" => ["00", ".0", "00"],
                 "z" => ["0.", ".0", "00"]
 }
+  end
+
+end
