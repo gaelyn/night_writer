@@ -1,10 +1,11 @@
-message, braille = ARGV
-message_open = File.open("./#{message}").read
-# message = message_open.read
-# braille_file = braille
-braille_file = File.open("./#{braille}", "w")
-puts "created #{braille} containing #{message_open.length - 1} characters"
+message = File.open(ARGV[0], "r")
+read_message = message.read.chomp
+message.close
+puts read_message
 
-# braille_file.puts "I wrote this!"
-braille_file.puts message_open
-# braille_file.close
+braille = read_message.upcase
+write_braille = File.open(ARGV[1], "w")
+result = write_braille.write(braille)
+write_braille.close
+
+puts "created #{ARGV[1]} containing #{result} characters"
