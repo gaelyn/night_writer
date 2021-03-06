@@ -5,6 +5,7 @@ class Translator
   def initialize (message, braille)
     @message = message
     @braille = braille
+    # write_braille
     @braille_hash = {"a" => ["0.", "..", ".."],
                 "b" => ["0.", "0.", ".."],
                 "c" => ["00", "..", ".."],
@@ -32,6 +33,18 @@ class Translator
                 "y" => ["00", ".0", "00"],
                 "z" => ["0.", ".0", "00"]
 }
+  end
+
+  def write_braille(message)
+    @braille.write(message)
+  end
+
+  def translate
+    @braille_hash.find_all do |key, value|
+      if key == @message
+        new = write_braille(value.join("\n"))
+      end
+    end
   end
 
 end
