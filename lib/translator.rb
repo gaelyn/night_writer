@@ -40,11 +40,12 @@ class Translator
   end
 
   def translate
-    @braille_hash.find_all do |key, value|
+    new = @braille_hash.find_all do |key, value|
       if key == @message
-        new = write_braille(value.join("\n"))
+        write_braille(value.join("\n"))
       end
     end
+    new[0][1].join("\n")
   end
 
 end
