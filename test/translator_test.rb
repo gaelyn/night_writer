@@ -38,8 +38,21 @@ class TranslatorTest < Minitest::Test
     assert_equal "0.", @translator.read_braille
   end
 
+  def test_it_can_convert_letter_to_braille
+    skip
+    assert_equal [["0.", "..", ".."]], @translator.convert
+  end
+
+  def test_it_can_split_into_3_lines
+    skip
+    assert_equal ["0."], @translator.line1
+    assert_equal [".."], @translator.line2
+    assert_equal [".."], @translator.line3
+  end
+
   def test_it_can_translate_two_letters
     skip
-    assert_equal "0.0.\n..0.\n....\n", @translator.translate
+    assert_equal "0.\n..\n..\n", @translator.translate
+    # assert_equal "0.0.\n..0.\n....\n", @translator.translate
   end
 end
