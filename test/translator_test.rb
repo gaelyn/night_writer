@@ -26,8 +26,12 @@ class TranslatorTest < Minitest::Test
     assert_equal 1, @translator.write_braille(@read_message)
   end
 
+  def test_it_can_turn_message_into_array
+    assert_equal ["a"], @translator.message_to_array
+  end
+
   def test_it_can_translate_a_letter
-    # require "pry"; binding.pry
     assert_equal "0.\n..\n..", @translator.translate
+    assert_equal 8, @translator.write_braille(@translator.translate)
   end
 end
