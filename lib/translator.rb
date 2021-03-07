@@ -1,42 +1,21 @@
 class Translator
-  attr_reader :braille_hash,
-              :message,
-              :braille
+  attr_reader :message,
+              :braille,
+              :dictionary
   def initialize (message, braille)
     @message = message
     @braille = braille
-    puts "created #{ARGV[1]} containing #{@message.length} characters"
-    @braille_hash = {"a" => ["0.", "..", ".."],
-                "b" => ["0.", "0.", ".."],
-                "c" => ["00", "..", ".."],
-                "d" => ["00", ".0", ".."],
-                "e" => ["0.", ".0", ".."],
-                "f" => ["00", "0.", ".."],
-                "g" => ["00", "00", ".."],
-                "h" => ["0.", "00", ".."],
-                "i" => [".0", "0.", ".."],
-                "j" => [".0", "00", ".."],
-                "k" => ["0.", "..", "0."],
-                "l" => ["0.", "0.", "0."],
-                "m" => ["00", "..", "0."],
-                "n" => ["00", ".0", "0."],
-                "o" => ["0.", ".0", "0."],
-                "p" => ["00", "0.", "0."],
-                "q" => ["00", "00", "0."],
-                "r" => ["0.", "00", "0."],
-                "s" => [".0", "0.", "0."],
-                "t" => [".0", "00", "0."],
-                "u" => [".0", "..", "00"],
-                "v" => ["0.", "0.", "00"],
-                "w" => [".0", "00", ".0"],
-                "x" => ["00", "..", "00"],
-                "y" => ["00", ".0", "00"],
-                "z" => ["0.", ".0", "00"]
-}
+    # puts "created #{ARGV[1]} containing #{@message.length} characters"
+    @dictionary = Dictionary.new
   end
 
   def write_braille(message)
     @braille.write(message)
+    @braille.close
+  end
+
+  def read_braille
+    read_braille = File.open(ARGV[1], "r").read
   end
 
   def message_to_array
@@ -44,14 +23,48 @@ class Translator
   end
 
   def translate
-    values = []
-    message_to_array.each do |letter|
-      @braille_hash.each do |key, braille|
-        if letter == key
-          values << braille
-        end
-      end
+    result = message_to_array.map do |letter|
+      @dictionary.braille_hash[letter]
     end
-    values.join("\n")
+
+    line1 = result.map do |array|
+      array[0]
+    end
+    line2 = result.map do |array|
+      array[1]
+    end
+    line3 = result.map do |array|
+      array[2]
+    end
+
+    new_array = [line1, line2, line3]
+
+    joined = new_array.flat_map do |line|
+      line.join + "\n"
+    end.join
+
+    # write_braille(joined)
   end
+
+  # def translate1
+  #   message_to_array.each do |letter|
+  #     write_braille(@dictionary.line1[letter])
+  #   end
+  # end
+  #
+  # def translate2
+  #   message_to_array.each do |letter|
+  #     write_braille(@dictionary.line2[letter])
+  #   end
+  # end
+  #
+  # def translate3
+  #   message_to_array.each do |letter|
+  #     write_braille(@dictionary.line3[letter])
+  #   end
+  # end
+  #
+  # def translate_all
+  #   "#{translate1}\n#{translate2}\n#{translate3}"
+  # end
 end
