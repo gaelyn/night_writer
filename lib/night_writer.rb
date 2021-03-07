@@ -1,3 +1,7 @@
-message, braille = ARGV
-message_file = File.read("./#{message}")
-puts "created #{braille} containing #{message_file.length - 1} characters"
+require './lib/translator'
+
+  message = File.open(ARGV[0], "r")
+  read_message = message.read.chomp
+  braille = File.open(ARGV[1], "w")
+  translator = Translator.new(read_message, braille)
+  translator.write_braille(translator.translate)
