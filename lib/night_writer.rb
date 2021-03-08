@@ -7,5 +7,4 @@ require './lib/dictionary'
   translator = Translator.new(read_message, braille)
 
   puts translator.welcome
-  require "pry"; binding.pry
   translator.write_braille(translator.translate)

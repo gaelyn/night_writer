@@ -26,7 +26,8 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_can_print_welcome_message
-    assert_equal nil, @translator.welcome
+    skip
+    assert_equal "Created newfile.txt containing 1 characters", @translator.welcome
   end
 
   def test_it_can_turn_message_into_array

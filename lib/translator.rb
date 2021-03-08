@@ -9,7 +9,7 @@ class Translator
   end
 
   def welcome
-    puts "Created #{ARGV[1]} containing #{@message.length} characters"
+    "Created #{ARGV[1]} containing #{@message.length} characters"
   end
 
   def write_braille(message)
