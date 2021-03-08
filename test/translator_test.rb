@@ -9,7 +9,7 @@ class TranslatorTest < Minitest::Test
     @message = File.open(ARGV[0], "r")
     @read_message = @message.read.chomp
     @braille = File.open(ARGV[1], "w+")
-    @read_braille = File.open(ARGV[1], "r")
+    # @read_braille = File.open(ARGV[1], "r")
     @translator = Translator.new(@read_message, @braille)
   end
 
