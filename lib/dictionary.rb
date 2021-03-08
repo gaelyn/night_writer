@@ -51,5 +51,4 @@ class Dictionary
       value[2]
     end
   end
-
 end
