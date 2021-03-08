@@ -5,8 +5,11 @@ class Translator
   def initialize (message, braille)
     @message = message
     @braille = braille
-    # puts "created #{ARGV[1]} containing #{@message.length} characters"
     @dictionary = Dictionary.new
+  end
+
+  def welcome
+    puts "Created #{ARGV[1]} containing #{@message.length} characters"
   end
 
   def write_braille(message)
@@ -22,27 +25,21 @@ class Translator
     @message.chars
   end
 
-  def convert
-    message_to_array.map do |letter|
-      @dictionary.braille_hash[letter]
-    end
-  end
-
   def line1
-    convert.map do |array|
-      array[0]
+    message_to_array.map do |letter|
+      @dictionary.line1[letter]
     end
   end
 
   def line2
-    convert.map do |array|
-      array[1]
+    message_to_array.map do |letter|
+      @dictionary.line2[letter]
     end
   end
 
   def line3
-    convert.map do |array|
-      array[2]
+    message_to_array.map do |letter|
+      @dictionary.line3[letter]
     end
   end
 
@@ -53,5 +50,4 @@ class Translator
       line.join + "\n"
     end.join
   end
-
 end
