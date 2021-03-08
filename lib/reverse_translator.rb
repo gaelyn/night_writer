@@ -16,6 +16,14 @@ class ReverseTranslator
     @braille.split
   end
 
+  def split_out_letters
+    split_lines = braille_to_array.map do |line|
+      line.scan(/.{1,2}/m)
+    end
+
+    split_lines[0].zip(split_lines[1], split_lines[2])
+  end
+
   def write_english(message)
     @original.write(message)
     @original.close
@@ -26,7 +34,7 @@ class ReverseTranslator
   end
 
   def translate
-    braille_to_array.map do |char|
+    split_out_letters.map do |char|
       dictionary.english_hash[char]
     end.join
   end

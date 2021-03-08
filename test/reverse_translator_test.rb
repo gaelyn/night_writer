@@ -36,9 +36,18 @@ class ReverseTranslatorTest < Minitest::Test
   end
 
   def test_it_can_write_to_new_file
-    # skip
+    skip
     @reverse.write_english("a")
-
     assert_equal "a", @reverse.read_original
+  end
+
+  def test_it_can_split_lines_back_to_braille_arrays
+    skip
+    assert_equal [["0.", "..", ".."], ["0.", "0.", ".."]], @reverse.split_out_letters
+  end
+
+  def test_it_can_translate_to_english
+    skip
+    assert_equal "a", @reverse.translate
   end
 end
