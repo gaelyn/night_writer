@@ -9,7 +9,7 @@ class ReverseTranslator
   end
 
   def welcome
-    "Created #{ARGV[1]} containing #{@braille.length} characters"
+    "Created #{ARGV[1]} containing #{@braille.length / 6} characters"
   end
 
   def braille_to_array
