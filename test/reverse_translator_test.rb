@@ -9,7 +9,6 @@ class ReverseTranslatorTest < Minitest::Test
     @braille = File.open(ARGV[0], "r")
     @read_braille = @braille.read.chomp
     @original_message = File.open(ARGV[1], "w+")
-    # @read_original = File.open(ARGV[1], "r")
     @reverse = ReverseTranslator.new(@read_braille, @original_message)
   end
 
@@ -43,6 +42,7 @@ class ReverseTranslatorTest < Minitest::Test
 
   def test_it_can_split_lines_back_to_braille_arrays
     skip
+    #used "ab" to test this instead of "a"
     assert_equal [["0.", "..", ".."], ["0.", "0.", ".."]], @reverse.split_out_letters
   end
 
