@@ -14,6 +14,9 @@ class DictionaryTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal Hash, @dictionary.braille_hash.class
+    assert_equal Hash, @dictionary.english_hash.class
+    assert_equal ["0.", "..", ".."], @dictionary.braille_hash["a"]
+    assert_equal "a", @dictionary.english_hash[["0.", "..", ".."]]
   end
 
   def test_it_can_be_broken_into_3_lines

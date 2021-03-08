@@ -1,5 +1,6 @@
 class Dictionary
-  attr_reader :braille_hash
+  attr_reader :braille_hash,
+              :english_hash
   def initialize
     @braille_hash = { "a" => ["0.", "..", ".."],
                       "b" => ["0.", "0.", ".."],
@@ -29,6 +30,8 @@ class Dictionary
                       "z" => ["0.", ".0", "00"],
                       " " => ["..", "..", ".."]
     }
+
+    @english_hash = @braille_hash.invert
   end
 
   def line1
