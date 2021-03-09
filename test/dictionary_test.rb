@@ -30,9 +30,4 @@ class DictionaryTest < Minitest::Test
   def test_it_can_be_broken_into_3_lines
      assert_equal "..", @dictionary.line3["a"]
   end
-
-  # def test_it_can_read_braille_text
-  #   require "pry"; binding.pry
-  #   assert_equal ["0.0.", "..0.", "...."], @dictionary.braille_lines
-  # end
 end

@@ -30,7 +30,6 @@ class Dictionary
                       "z" => ["0.", ".0", "00"],
                       " " => ["..", "..", ".."]
     }
-
     @english_hash = @braille_hash.invert
   end
 
