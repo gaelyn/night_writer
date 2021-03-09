@@ -9,7 +9,6 @@ class TranslatorTest < Minitest::Test
     @message = File.open(ARGV[0], "r")
     @read_message = @message.read.chomp
     @braille = File.open(ARGV[1], "w+")
-    # @read_braille = File.open(ARGV[1], "r")
     @translator = Translator.new(@read_message, @braille)
   end
 
@@ -27,7 +26,7 @@ class TranslatorTest < Minitest::Test
 
   def test_it_can_print_welcome_message
     skip
-    assert_equal "Created newfile.txt containing 1 characters", @translator.welcome
+    assert_equal "Created braille.txt containing 1 characters", @translator.welcome
   end
 
   def test_it_can_turn_message_into_array
@@ -44,13 +43,18 @@ class TranslatorTest < Minitest::Test
 
   def test_it_can_split_into_3_lines
     skip
-    assert_equal ["0."], @translator.line1
-    assert_equal [".."], @translator.line2
-    assert_equal [".."], @translator.line3
+    assert_equal "0.", @translator.line1
+    assert_equal "..", @translator.line2
+    assert_equal "..", @translator.line3
   end
 
   def test_it_can_translate
-    # skip
+    skip
     assert_equal "0.\n..\n..\n", @translator.translate
+  end
+
+  def test_it_can_break_lines_at_80_characters
+    # skip
+    assert_equal "\n", @translator.translate[80]
   end
 end

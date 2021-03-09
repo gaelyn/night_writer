@@ -13,7 +13,20 @@ class ReverseTranslator
   end
 
   def braille_to_array
-    @braille.split
+    if @braille.length > 242
+      multi_line_braille_to_array
+    else
+      @braille.split
+    end
+  end
+
+  def multi_line_braille_to_array
+    split = @braille.split
+    result = []
+    for i in 0..2 do
+      result.push(split[i] + split[i += 3])
+    end
+    result
   end
 
   def split_out_letters

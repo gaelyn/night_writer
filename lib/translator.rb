@@ -116,7 +116,7 @@ class Translator
     if @message.length <= 40
       new_array = [line1, line2, line3]
       new_array.flat_map do |line|
-        line.join + "\n"
+        line + "\n"
       end.join
     else
       translate_over_40
@@ -124,7 +124,6 @@ class Translator
   end
 
   def translate_over_40
-    # require "pry"; binding.pry
     i = line1.count
     result = []
     for i in 0..(line1.length - 1) do
