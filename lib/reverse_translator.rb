@@ -21,10 +21,10 @@ class ReverseTranslator
   end
 
   def multi_line_braille_to_array
-    split = @braille.split
+    split_array = @braille.split
     result = []
     for i in 0..2 do
-      result.push(split[i] + split[i += 3])
+      result.push(split_array[i] + split_array[i += 3])
     end
     result
   end
