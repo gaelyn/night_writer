@@ -13,48 +13,48 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_exists
-    skip
+    # skip
     assert_instance_of Translator, @translator
   end
 
   def test_it_has_attributes
-    skip
+    # skip
     assert_equal "a", @translator.message
     assert_instance_of File, @translator.braille
     assert_instance_of Dictionary, @translator.dictionary
   end
 
   def test_it_can_print_welcome_message
-    skip
+    # skip
     assert_equal "Created braille.txt containing 1 characters", @translator.welcome
   end
 
   def test_it_can_turn_message_into_array
-    skip
+    # skip
     assert_equal ["a"], @translator.message_to_array
   end
 
   def test_it_can_write_to_new_file
-    skip
+    # skip
     @translator.write_braille("0.")
 
     assert_equal "0.", @translator.read_braille
   end
 
   def test_it_can_split_into_3_lines
-    skip
+    # skip
     assert_equal "0.", @translator.line1
     assert_equal "..", @translator.line2
     assert_equal "..", @translator.line3
   end
 
   def test_it_can_translate
-    skip
+    # skip
     assert_equal "0.\n..\n..\n", @translator.translate
   end
 
   def test_it_can_break_lines_at_80_characters
-    # skip
+    skip
     assert_equal "\n", @translator.translate[80]
   end
 end
