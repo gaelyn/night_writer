@@ -50,7 +50,7 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_can_translate
-    skip
+    # skip
     assert_equal "0.\n..\n..\n", @translator.translate
   end
 end
