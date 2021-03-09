@@ -31,7 +31,7 @@ class ReverseTranslator
 
   def split_out_letters
     split_lines = braille_to_array.map do |line|
-      line.scan(/.{1,2}/m)
+      line.scan(/../)
     end
 
     split_lines[0].zip(split_lines[1], split_lines[2])

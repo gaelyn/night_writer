@@ -13,29 +13,29 @@ class ReverseTranslatorTest < Minitest::Test
   end
 
   def test_it_exists
-    skip
+    # skip
     assert_instance_of ReverseTranslator, @reverse
   end
 
   def test_it_has_attributes
-    skip
+    # skip
     assert_equal "0.\n..\n..", @reverse.braille
     assert_instance_of File, @reverse.original
     assert_instance_of Dictionary, @reverse.dictionary
   end
 
   def test_it_can_print_welcome_message
-    skip
-    assert_equal "Created original.txt containing 8 characters", @reverse.welcome
+    # skip
+    assert_equal "Created original.txt containing 1 characters", @reverse.welcome
   end
 
   def test_it_can_turn_braille_into_array
-    skip
+    # skip
     assert_equal ["0.", "..", ".."], @reverse.braille_to_array
   end
 
   def test_it_can_write_to_new_file
-    skip
+    # skip
     @reverse.write_english("a")
     assert_equal "a", @reverse.read_original
   end
@@ -47,7 +47,7 @@ class ReverseTranslatorTest < Minitest::Test
   end
 
   def test_it_can_translate_to_english
-    skip
+    # skip
     assert_equal "a", @reverse.translate
   end
 end
